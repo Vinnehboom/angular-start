@@ -1,0 +1,16 @@
+.invalidInput {
+  color: red; }
+
+.errorMessage {
+  visibility: visible; }
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: gray; }
+
+.enabled {
+  cursor: pointer;
+  pointer-events: all; }
+
+/*# sourceMappingURL=app.component.css.map */

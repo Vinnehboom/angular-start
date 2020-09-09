@@ -1,0 +1,54 @@
+
+
+<div class="form-container d-flex w-50 mx-auto justify-content-around">
+
+  <form #formName="ngForm" novalidate (ngSubmit)="submitForm()">
+    <div>
+      <label [class.invalidInput]="first.touched && first.invalid" for="firstName">First Name</label>
+      <input  required type="text"
+              name="firstName" id="first"
+              placeholder="first name..."
+              [(ngModel)]="friendModel.firstName"
+              #first="ngModel"
+              pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$">
+    </div>
+    <div>
+      <label [class.invalidInput]="last.invalid && last.touched" for="lastName">Last Name</label>
+      <input required type="text"
+             name="lastName" id="last"
+             placeholder="last name..."
+             [(ngModel)]="friendModel.lastName"
+             #last="ngModel"
+              pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$">
+    </div>
+    <div>
+    <label [class.invalidInput]="email.invalid && email.touched" for="email">Email</label>
+    <input required type="email"
+           name="email" id="email"
+           placeholder="example@email.com"
+           [(ngModel)]="friendModel.email"
+           #email="ngModel"
+           pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b">
+    </div>
+    <div>
+    <label [class.invalidInput]="phone.invalid && phone.touched" for="number">Phone number</label>
+    <input required type="text"
+           name="number" id="number"
+           placeholder="+32412345678"
+           [(ngModel)]="friendModel.phone"
+           #phone="ngModel"
+           pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$">
+    </div>
+    <div>
+    <label for="language">Favorite language</label>
+    <select required name="language" id="language" [(ngModel)]="friendModel.language" #language="ngModel">
+    <option *ngFor="let language of languages" value="{{language}}" >
+      {{language}}
+    </option>
+    </select>
+    </div>
+
+    <button type="submit" [class.disabled]="formName.form.invalid" [class.enabled]="formName.form.valid" >Submit</button>
+
+  </form>
+</div>
